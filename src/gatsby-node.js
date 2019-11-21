@@ -111,7 +111,7 @@ const addPageNodes = (parsedNodesArray, allSiteNodes, siteUrl) => {
 
     remainingNodes.forEach(({ node }) => {
         addedPageNodes.pages.push({
-            url: url.resolve(siteUrl, path.resolove('/blog/', node.url)),
+            url: url.resolve(siteUrl, path.resolve('/blog/', node.url)),
             node: node,
         })
     })
