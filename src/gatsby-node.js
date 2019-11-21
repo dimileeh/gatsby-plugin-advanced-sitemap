@@ -24,7 +24,6 @@ const DEFAULTQUERY = `{
   site {
     siteMetadata {
       siteUrl
-      pathPrefix
     }
   }
 }`
@@ -191,7 +190,7 @@ const serialize = ({ ...sources } = {},{ site, allSitePage }, mapping) => {
     const sourceObject = {}
 
     siteUrl = site.siteMetadata.siteUrl
-    pathPrefix = site.siteMetadata.pathPrefix
+    pathPrefix = `/blog` 
 	
     for (let type in sources) {
         if (mapping[type] && mapping[type].sitemap) {
@@ -230,7 +229,7 @@ const serialize = ({ ...sources } = {},{ site, allSitePage }, mapping) => {
     }
     nodes.push(sourceObject)
 
-    const pageNodes = addPageNodes(nodes, allSitePage.edges, siteUrl + "/" + pathPrefix)
+    const pageNodes = addPageNodes(nodes, allSitePage.edges, siteUrl + pathPrefix)
 
     const allNodes = _.merge(nodes, pageNodes)
 
