@@ -110,6 +110,9 @@ const addPageNodes = (parsedNodesArray, allSiteNodes, siteUrl) => {
     const remainingNodes = _.difference(allSiteNodes, usedNodes)
 
     remainingNodes.forEach(({ node }) => {
+	console.log("DEBUG: " + siteUrl)
+	console.log("DEBUG2: " + node.url)
+	console.log("DEBUG3: " + url.resolve(siteUrl, path.resolve('/blog/', node.url)))
         addedPageNodes.pages.push({
             url: url.resolve(siteUrl, path.resolve('/blog/', node.url)),
             node: node,
