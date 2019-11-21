@@ -109,6 +109,11 @@ const addPageNodes = (parsedNodesArray, allSiteNodes, siteUrl) => {
     })
 
     const remainingNodes = _.difference(allSiteNodes, usedNodes)
+                    if (mapping[type].path) {
+                        node.path = path.resolve(mapping[type].path, node.slug)
+                    } else {
+                        node.path = node.slug
+                    }
 
     remainingNodes.forEach(({ node }) => {
         addedPageNodes.pages.push({
@@ -185,7 +190,7 @@ const serialize = ({ ...sources } = {},{ site, allSitePage }, mapping) => {
     const sourceObject = {}
 
     siteUrl = site.siteMetadata.siteUrl
-
+	
     for (let type in sources) {
         if (mapping[type] && mapping[type].sitemap) {
             const currentSource = sources[type] ? sources[type] : []
@@ -223,7 +228,7 @@ const serialize = ({ ...sources } = {},{ site, allSitePage }, mapping) => {
     }
     nodes.push(sourceObject)
 
-    const pageNodes = addPageNodes(nodes, allSitePage.edges, siteUrl)
+    const pageNodes = addPageNodes(nodes, allSitePage.edges, siteUrl + mapping[`pages`].path ? `/` + mapping[`pages`].path : "")
 
     const allNodes = _.merge(nodes, pageNodes)
 
