@@ -132,7 +132,6 @@ const serializeSources = (mapping) => {
         // Ignore the key and only return the name and
         // source as we need those to create the index
         // and the belonging sources accordingly
-        console.log("DEBUG: " + source.name ? source.name : source.sitemap + source.sitemap || `pages`) 
         return {
             name: source.name ? source.name : source.sitemap,
             sitemap: source.sitemap || `pages`,
@@ -140,6 +139,7 @@ const serializeSources = (mapping) => {
     })
 
     sitemaps = _.uniqBy(sitemaps, `name`)
+    console.log("DEBUG: " + sitemaps) 
 
     return sitemaps
 }
