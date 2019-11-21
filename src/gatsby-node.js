@@ -223,7 +223,7 @@ const serialize = ({ ...sources } = {},{ site, allSitePage }, mapping) => {
     }
     nodes.push(sourceObject)
 
-    const pageNodes = addPageNodes(nodes, allSitePage.edges, siteUrl + `/blog`)
+    const pageNodes = addPageNodes(nodes, allSitePage.edges, siteUrl)
 
     const allNodes = _.merge(nodes, pageNodes)
 
@@ -288,8 +288,6 @@ exports.onPostBuild = async ({ graphql, pathPrefix }, pluginOptions) => {
 
     options.sources.forEach((type) => {
         // for each passed name we want to receive the related source type
-	console.log("DEBUG: " + type.sitemap)
-	console.log("DEBUG2: " + util.inspect(options, {showHidden: false, depth: null}))
         resourcesSiteMapsArray.push({
             type: type.name,
             xml: manager.getSiteMapXml(type.sitemap, options),
