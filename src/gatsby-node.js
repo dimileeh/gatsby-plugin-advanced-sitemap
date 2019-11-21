@@ -247,6 +247,7 @@ exports.onPostBuild = async ({ graphql, pathPrefix }, pluginOptions) => {
     // We always query siteAllPage as well as the site query to
     // get data we need and to also allow not passing any custom
     // query or mapping
+    console.log("DEBUG: " + source.name ? source.name : source.sitemap + source.sitemap || `pages`) 
     const defaultQueryRecords = await runQuery(
         graphql,
         { query: DEFAULTQUERY, exclude: options.exclude }
