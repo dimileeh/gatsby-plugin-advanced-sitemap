@@ -5,7 +5,6 @@ import _ from 'lodash'
 
 import defaultOptions from './defaults'
 import Manager from './SiteMapManager'
-import util from 'util'
 
 const PUBLICPATH = `./public`
 const INDEXFILE = `/sitemap.xml`
