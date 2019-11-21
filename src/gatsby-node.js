@@ -5,6 +5,7 @@ import _ from 'lodash'
 
 import defaultOptions from './defaults'
 import Manager from './SiteMapManager'
+import util from 'util'
 
 const PUBLICPATH = `./public`
 const INDEXFILE = `/sitemap.xml`
@@ -139,7 +140,7 @@ const serializeSources = (mapping) => {
     })
 
     sitemaps = _.uniqBy(sitemaps, `name`)
-    console.log("DEBUG: " + sitemaps) 
+    console.log("DEBUG: " + util.inspect(sitemaps, {showHidden: false, depth: null}))
 
     return sitemaps
 }
