@@ -109,11 +109,6 @@ const addPageNodes = (parsedNodesArray, allSiteNodes, siteUrl) => {
     })
 
     const remainingNodes = _.difference(allSiteNodes, usedNodes)
-                    if (mapping[type].path) {
-                        node.path = path.resolve(mapping[type].path, node.slug)
-                    } else {
-                        node.path = node.slug
-                    }
 
     remainingNodes.forEach(({ node }) => {
         addedPageNodes.pages.push({
