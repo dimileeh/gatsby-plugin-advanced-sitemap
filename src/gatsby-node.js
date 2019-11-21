@@ -140,7 +140,6 @@ const serializeSources = (mapping) => {
     })
 
     sitemaps = _.uniqBy(sitemaps, `name`)
-    console.log("DEBUG: " + util.inspect(sitemaps, {showHidden: false, depth: null}))
 
     return sitemaps
 }
@@ -289,6 +288,8 @@ exports.onPostBuild = async ({ graphql, pathPrefix }, pluginOptions) => {
 
     options.sources.forEach((type) => {
         // for each passed name we want to receive the related source type
+	console.log("DEBUG: " + type.sitemap)
+	console.log("DEBUG2: " + util.inspect(options, {showHidden: false, depth: null}))
         resourcesSiteMapsArray.push({
             type: type.name,
             xml: manager.getSiteMapXml(type.sitemap, options),
