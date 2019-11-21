@@ -132,6 +132,7 @@ const serializeSources = (mapping) => {
         // Ignore the key and only return the name and
         // source as we need those to create the index
         // and the belonging sources accordingly
+        console.log("DEBUG: " + source.name ? source.name : source.sitemap + source.sitemap || `pages`) 
         return {
             name: source.name ? source.name : source.sitemap,
             sitemap: source.sitemap || `pages`,
@@ -247,7 +248,6 @@ exports.onPostBuild = async ({ graphql, pathPrefix }, pluginOptions) => {
     // We always query siteAllPage as well as the site query to
     // get data we need and to also allow not passing any custom
     // query or mapping
-    console.log("DEBUG: " + source.name ? source.name : source.sitemap + source.sitemap || `pages`) 
     const defaultQueryRecords = await runQuery(
         graphql,
         { query: DEFAULTQUERY, exclude: options.exclude }
