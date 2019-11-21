@@ -190,7 +190,6 @@ const serialize = ({ ...sources } = {},{ site, allSitePage }, mapping) => {
     const sourceObject = {}
 
     siteUrl = site.siteMetadata.siteUrl
-    pathPrefix = `/blog` 
 	
     for (let type in sources) {
         if (mapping[type] && mapping[type].sitemap) {
@@ -229,7 +228,7 @@ const serialize = ({ ...sources } = {},{ site, allSitePage }, mapping) => {
     }
     nodes.push(sourceObject)
 
-    const pageNodes = addPageNodes(nodes, allSitePage.edges, siteUrl + pathPrefix)
+    const pageNodes = addPageNodes(nodes, allSitePage.edges, siteUrl + `/blog`)
 
     const allNodes = _.merge(nodes, pageNodes)
 
